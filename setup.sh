@@ -7,6 +7,7 @@ else
   #sudo apt-get install git zsh neovim terminator
   echo "Only Arch support as of now."
   exit
+fi
 
 ln -s ~/.dircolors ./dircolors
 ln -s ~/.gitconfig ./gitconfig
@@ -28,7 +29,7 @@ curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
 ln -s ~/.config/nvim/init.vim ./init.vim
 
 mkdir -p ~/.config/terminator
-ln -s ~/config/terminator/config ./terminator.config
+ln -s ~/.config/terminator/config ./terminator.config
 
 mkdir -p ~/.fonts
 ln -s ~/.fonts/Hack-Regular.ttf ./Hack-Regular.ttf
