@@ -3,9 +3,9 @@ ZSH_DISABLE_COMPFIX="true"
 ZSH_THEME="agnoster"
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/jan/.oh-my-zsh"
+export ZSH="~/.oh-my-zsh"
 export EDITOR=/usr/sbin/nvim
-export DEFAULT_USER=jan
+export DEFAULT_USER=`whoami`
 
 plugins=(git ssh-agent)
 
