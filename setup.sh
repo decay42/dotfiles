@@ -1,11 +1,13 @@
 #!/bin/bash
 OS=`cat /etc/os-release | grep ID= | awk -F '=' '{print $2}'`
 
-echo "Arch detected. Do you want to install required packages? (y/n)"
-read install
 
-if [ [$OS = "arch"] && [$install = "y"] ]; then
-  sudo pacman -Syu --needed git zsh neovim terminator
+if [ $OS = "arch" ]; then
+  echo "Arch detected. Do you want to install required packages? (y/n)"
+  read install
+  if [ $install = "y" ]; then
+    sudo pacman -Syu --needed git zsh neovim terminator
+  fi
 fi
 
 echo "Do you want to install oh-my-zsh? (y/n)"
