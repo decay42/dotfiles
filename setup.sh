@@ -4,7 +4,7 @@ OS=`cat /etc/os-release | grep ID= | awk -F '=' '{print $2}'`
 echo "Arch detected. Do you want to install required packages? (y/n)"
 read install
 
-if [ $OS = "arch" && $install = "y" ]; then
+if [ [$OS = "arch"] && [$install = "y"] ]; then
   sudo pacman -Syu --needed git zsh neovim terminator
 fi
 

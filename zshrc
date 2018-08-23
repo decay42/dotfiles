@@ -3,13 +3,21 @@ ZSH_DISABLE_COMPFIX="true"
 ZSH_THEME="agnoster"
 
 # Path to your oh-my-zsh installation.
-export ZSH="~/.oh-my-zsh"
+export ZSH="/home/jan/.oh-my-zsh"
 export EDITOR=/usr/sbin/nvim
-export DEFAULT_USER=`whoami`
+export DEFAULT_USER=jan
 
 plugins=(git ssh-agent)
 
 source $ZSH/oh-my-zsh.sh
+
+# NVM, comment out the following line to disable
+source /usr/share/nvm/init-nvm.sh
+
+# local config
+if [[ -e ~/.local_dotfile ]]; then
+  source ~/.local_dotfile
+fi
 
 eval `dircolors ~/.dircolors`
 
