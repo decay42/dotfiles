@@ -11,15 +11,20 @@ Plug 'vim-scripts/bufexplorer.zip'
 Plug 'vim-scripts/mru.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'chrisbra/Colorizer'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
 Plug 'lervag/vimtex'
 Plug 'godlygeek/tabular'
+Plug 'ervandew/supertab'
+Plug 'yggdroot/indentline'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 call plug#end()
 
 " **************************************************************************** 
 " ######################### PLUGIN SPECIFIC SETTINGS #########################
 " **************************************************************************** 
+let g:deoplete#enable_at_startup = 1
 
 filetype plugin on
 
@@ -31,6 +36,11 @@ let g:vue_disable_pre_processors=1
 " Ignore stuff
 let g:NERDTreeIgnore=['node_modules$[[dir]]']
 set wildignore+=*/node_modules/* 
+
+" ############################ Lightline Settings ############################ 
+let g:lightline = {
+  \ 'colorscheme': 'one',
+  \ }
 
 " ############################# Airline Settings ############################# 
 let g:airline_theme='onedark'
@@ -52,7 +62,7 @@ let g:vimtex_quickfix_latexlog = {
   \ },
   \}
 let g:tex_flavor = "latex"
-
+let g:tex_conceal = ""
 " ****************************************************************************
 " ########################### COLOR/THEME SETTINGS ###########################
 " ****************************************************************************
@@ -119,6 +129,9 @@ map <leader>nf :NERDTreeFind<cr>
 map <leader>lv :VimtexView<cr>
 map <leader>ch <Plug>Colorizer
 
+map  <C-B>      YpkI\begin{<DEL><ESC>A}<ESC>jI\end{<DEL><ESC>A}<esc>kA
+map! <C-B> <ESC>YpkI\begin{<DEL><ESC>A}<ESC>jI\end{<DEL><ESC>A}<esc>kA
+
 nmap <M-j> mz:m+<cr>`z
 nmap <M-k> mz:m-2<cr>`z
 nnoremap <esc> :noh<return><esc>
@@ -127,4 +140,5 @@ vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
 vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 inoremap jk <esc>
-noremap <tab> <c-x><c-o>
+inoremap <buffer> <leader>/ \frac{}{}<Esc>F}i
+"inoremap <tab> <c-x><c-o>
