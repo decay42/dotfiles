@@ -1,15 +1,15 @@
 # Fix for permission warning
 ZSH_DISABLE_COMPFIX="true"
-ZSH_THEME="powerlevel9k/powerlevel9k" #"agnoster"
+ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_MODE='awesome-fontconfig'
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(status dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(time)
-POWERLEVEL9K_VCS_GIT_ICON=$'\uf113'
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=() # (time)
+# POWERLEVEL9K_VCS_GIT_ICON=$'\uf113'
 POWERLEVEL9K_STATUS_VERBOSE=false
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
 POWERLEVEL9K_TIME_FORMAT="%D{%H:%M}"
-#
+
 # Path to your oh-my-zsh installation.
 export ZSH="/home/jan/.oh-my-zsh"
 export EDITOR=/usr/sbin/nvim
