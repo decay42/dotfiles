@@ -1,8 +1,8 @@
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'joshdick/onedark.vim'
-Plug 'sheerun/vim-polyglot'
-Plug 'tpope/vim-fugitive'
-Plug 'scrooloose/nerdtree'
+"Plug 'sheerun/vim-polyglot'
+"Plug 'tpope/vim-fugitive'
+"Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-surround'
 Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdcommenter'
@@ -13,12 +13,21 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'chrisbra/Colorizer'
 "Plug 'vim-airline/vim-airline'
 "Plug 'vim-airline/vim-airline-themes'
-Plug 'itchyny/lightline.vim'
-Plug 'lervag/vimtex'
+"Plug 'itchyny/lightline.vim'
+"Plug 'lervag/vimtex'
 Plug 'godlygeek/tabular'
 Plug 'ervandew/supertab'
 Plug 'yggdroot/indentline'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'justinmk/vim-sneak'
+Plug 'mkitt/tabline.vim'
+"Plug 'pangloss/vim-javascript'
+"Plug 'nightsense/cosmic_latte'
+"Plug 'chriskempson/base16-vim'
+"Plug 'morhetz/gruvbox'
+"Plug 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'rakr/vim-one'
+Plug 'jelera/vim-javascript-syntax'
 call plug#end()
 
 " **************************************************************************** 
@@ -63,12 +72,39 @@ let g:vimtex_quickfix_latexlog = {
   \}
 let g:tex_flavor = "latex"
 let g:tex_conceal = ""
+
+" ############################# Sneak Settings ###############################
+let g:sneak#s_next = 1
+
+" ########################## Indent Line Settings ############################
+let g:indentLine_char = '│'
+let g:indentLine_color_gui = '#30363C'
+
+" ########################### EasyMotion Settings ########################### 
+let g:EasyMotion_smartcase = 1
+
+
+" ########################### Netrw Settings ########################### 
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+
+
 " ****************************************************************************
 " ########################### COLOR/THEME SETTINGS ###########################
 " ****************************************************************************
 
 syntax on            " syntax highlighting
-colorscheme onedark  " onedark color scheme, like atom one dark
+"colorscheme onedark  " onedark color scheme, like atom one dark
+set background=dark
+let base16colorspace=256
+"colorscheme base16-default-dark
+colorscheme one
+" # Tabline Settings #
+hi TabLine      ctermfg=Black  ctermbg=Green     cterm=NONE
+hi TabLineFill  ctermfg=Black  ctermbg=Green     cterm=NONE
+hi TabLineSel   ctermfg=White  ctermbg=DarkBlue  cterm=NONE
 
 " Enable true color support
 if (has("nvim"))
@@ -91,12 +127,14 @@ set encoding=utf-8
 set omnifunc=syntaxcomplete#Complete " enable syntax completion
 
 set number relativenumber    " hybrid line numbers
-set list listchars=tab:»·,
-  \space:·,trail:~           " 'invisible' characters
+"set list listchars=tab:»·,
+"  \space:·,trail:~           " 'invisible' characters
+set nolist
 set expandtab                " convert tabs to spaces
 set smarttab                 " use smart tabs
 set shiftwidth=2             " use 2 spaces for indentation
 set softtabstop=2            " same
+set tabstop=2
 set noshowmode               " hide vim statusbar
 set ai                       " autoindent
 set si                       " smartindent
@@ -113,6 +151,8 @@ set magic
 set showmatch
 set foldcolumn=1             " add 1 blank column next to line numbers
 
+set conceallevel=0
+let g:indentLine_setConceal = 0
 " **************************************************************************** 
 " ################################# BINDINGS #################################
 " **************************************************************************** 
@@ -123,9 +163,10 @@ let maplocalleader = ' '
 let g:ctrlp_map = '<c-f>'
 map <leader>o :BufExplorer<cr>
 map <leader>f :MRU<CR>
-map <leader>nn :NERDTreeToggle<cr>
-map <leader>nb :NERDTreeFromBookmark 
-map <leader>nf :NERDTreeFind<cr>
+"map <leader>nn :NERDTreeToggle<cr>
+"map <leader>nb :NERDTreeFromBookmark 
+"map <leader>nf :NERDTreeFind<cr>
+map <leader>nn :Lexplore<cr>
 map <leader>lv :VimtexView<cr>
 map <leader>ch <Plug>Colorizer
 
@@ -142,3 +183,28 @@ vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 inoremap jk <esc>
 inoremap <buffer> <leader>/ \frac{}{}<Esc>F}i
 "inoremap <tab> <c-x><c-o>
+
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map <Leader>w <Plug>(easymotion-w)
+map <Leader>b <Plug>(easymotion-b)
+nmap <leader>s <Plug>(easymotion-overwin-f2)
+
+nnoremap ' `
+nnoremap ` '
+onoremap ' `
+onoremap ` ' 
+
+map <Leader>m 'm
+
+" automatically jump to the end of the text you just copied/pasted:
+xnoremap <silent> y y`]
+nnoremap <silent> yy yy`]
+xnoremap <silent> p p`]
+xnoremap <silent> P P`]
+nnoremap <silent> p p`]
+nnoremap <silent> P P`]
+" reselect pasted text
+nnoremap <Leader>gv `[v`]
+
+nnoremap <BS> <C-^>
