@@ -2,5 +2,12 @@
   name = Jan Pfeiffer
   email = liberry@ymail.com
 [alias]
-  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  lg = log --color --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
 
+[oh-my-zsh]
+	hide-status = 1
+	hide-dirty = 1
+[core]
+  autocrlf = input
+  eol = input
+  safecrlf = false
